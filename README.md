@@ -55,3 +55,28 @@ pnpm export  # PDF
 - Mozilla — [standards-positions #79: Client Hints](https://github.com/mozilla/standards-positions/issues/79), позиция neutral
 - WebKit — [standards-positions #20: HTTP Client Hints](https://github.com/WebKit/standards-positions/issues/20), позиция blocked
 - Fastly — [Getting the most out of Vary with Fastly](https://www.fastly.com/blog/getting-most-out-vary-fastly)
+
+## Дополнительно
+
+На этих материалах держатся факты в докладе, но QR на них в слайдах нет.
+
+Гидратация и флэш:
+
+- next-themes — [Avoid Hydration Mismatch](https://github.com/pacocoursey/next-themes#avoid-hydration-mismatch): тема на сервере неизвестна
+- Remix — [issue #6684: Rendering dates to locale causes hydration errors](https://github.com/remix-run/remix/issues/6684)
+- Vuetify Nuxt module — [issue #325: "system" theme does not work (SSG + SSR)](https://github.com/vuetifyjs/nuxt-module/issues/325) и [issue #58: Wrong start color-scheme if ssr true](https://github.com/vuetifyjs/nuxt-module/issues/58)
+- Google Search Central — [Understand JavaScript SEO Basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+Способы:
+
+- Nuxt — [`onPrehydrate`](https://nuxt.com/docs/4.x/api/composables/on-prehydrate): скрипт, который выполняется до гидратации
+- Mat Marquis — [The end of responsive images](https://piccalil.li/blog/the-end-of-responsive-images/), про `sizes="auto"`
+- WebKit — [WebKit Features for Safari 27.0](https://webkit.org/blog/18325/webkit-features-for-safari-27-0/): поддержка `sizes="auto"`
+- MDN — [`<img>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img): запасной `sizes` и `width`/`height`, чтобы место под картинку было зарезервировано заранее
+
+Client Hints и кэш:
+
+- MDN — [HTTP Client hints](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Client_hints), включая `Critical-CH`
+- MDN — [HTTP caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching): персональный ответ и `Cache-Control: private`
+- Fastly — [HTTP Vary Header: Best Practices](https://www.fastly.com/blog/best-practices-using-vary-header)
+- Cloudflare — [Vary for images](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/)
