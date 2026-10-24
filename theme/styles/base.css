@@ -1,0 +1,193 @@
+html, body, #app {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.slidev-layout {
+  background-color: var(--bg);
+  color: var(--fg);
+  padding: var(--slide-pad);
+  font-size: var(--t-body);
+  line-height: 1.55;
+}
+
+/* Dotted background — kept from previous style.css, retuned */
+.slidev-layout::before {
+  content: "";
+  z-index: 0;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
+.slidev-layout > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography */
+.slidev-layout h1 {
+  font-size: var(--t-h1);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+.slidev-layout h2 {
+  font-size: var(--t-h2);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.slidev-layout h3 {
+  font-size: var(--t-h3);
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  font-size: var(--t-body);
+  line-height: 1.55;
+  color: var(--fg);
+}
+
+/* Slidev wraps plain-text named-slot content in <p>. When that p lands
+   inside a heading/header, it must be transparent so the parent's
+   typography wins. */
+.slidev-layout :is(h1, h2, h3, h4, h5, h6, header) p {
+  all: unset;
+  display: inline;
+}
+
+.slidev-layout a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.slidev-layout strong {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.slidev-layout ul {
+  margin-top: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.slidev-layout .card ul {
+  margin-top: 0;
+}
+
+/* Global table styling for markdown tables across all slides */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: var(--s-4);
+  font-size: 0.82em;
+  line-height: 1.35;
+  background: color-mix(in srgb, var(--bg-elevated) 82%, transparent);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.slidev-layout thead th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--fg);
+  background: color-mix(in srgb, var(--surface-hi) 85%, transparent);
+  border-bottom: 1px solid var(--border-hi);
+}
+
+.slidev-layout th,
+.slidev-layout td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+.slidev-layout tbody td {
+  border-bottom: 1px solid var(--border);
+}
+
+.slidev-layout tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.slidev-layout tbody tr:nth-child(odd) td {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.slidev-layout pre,
+.slidev-layout code:not(pre code) {
+  border: 1px solid var(--border);
+}
+
+.slidev-layout pre {
+  border-radius: var(--r-md);
+  background-color: var(--bg-elevated);
+  /* Tighter vertically than horizontally: the 18px code size costs height, and
+     height is what runs out first on a 552px slide. */
+  padding: var(--s-4) var(--s-5);
+}
+
+.slidev-layout code:not(pre code) {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: var(--t-mono);
+  padding: 2px 6px;
+  border-radius: var(--r-sm);
+  background-color: var(--surface);
+}
+
+/* Inline code inside a heading inherited --t-mono (15px) instead of scaling
+   with the heading — a `code` word in a 44-56px title read as a typo-sized
+   afterthought. Relative unit so it tracks whichever h1 size the layout uses. */
+.slidev-layout :is(h1, h2) code:not(pre code) {
+  font-size: 0.6em;
+  padding: 0 8px;
+}
+
+/* 18px is for `hero` slides, where the code IS the slide. On `default` slides the
+   code shares 331px of body height with a title, a lead line and the footer
+   chips, so it steps down one notch — still +33% over Slidev's 12px default. */
+.slidev-layout.default {
+  --slidev-code-font-size: 15px;
+  --slidev-code-line-height: 22px;
+}
+
+/* Step-highlights ({7}, {all|5-9}) dim the other lines. Slidev's default is
+   opacity .3, which on --bg #050505 goes invisible through a projector. */
+.slidev-code .slidev-code-dishonored {
+  opacity: 0.55;
+}
+
+/* Shiki's comment token (#758575DD on our bg ≈ 5:1) reads as low-contrast from
+   the back of a room — bump it the same way A1 already fixed dishonored-line
+   opacity. Matched by the exact --shiki-dark value shiki inlines per span,
+   since there's no semantic .token-comment class to hook. */
+.slidev-code span[style*="--shiki-dark: #758575"] {
+  --shiki-dark: #9DBB9D !important;
+  --shiki-light: #4B5E4B !important;
+}
+
+/* Readability floor: 14px secondary text is a documented failure mode of this
+   deck (DESIGN.md). Inside slide content, text-sm means --t-small (16px).
+   SlideFooter lives outside .slidev-layout and keeps 14px. */
+.slidev-layout .text-sm {
+  font-size: var(--t-small);
+  line-height: 1.4;
+}

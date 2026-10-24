@@ -1,0 +1,3 @@
+<template>
+  <SlideFooter />
+</template>

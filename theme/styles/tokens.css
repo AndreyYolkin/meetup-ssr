@@ -1,0 +1,47 @@
+:root {
+  /* colors */
+  --bg: #050505;
+  --bg-elevated: #0B0B0F;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hi: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-hi: rgba(255, 255, 255, 0.18);
+  --fg: #FFFFFF;
+  --fg-muted: rgba(255, 255, 255, 0.64);
+  /* 0.40 was on the edge of readability on a washed-out projector */
+  --fg-dim: rgba(255, 255, 255, 0.48);
+  --accent: #787EFF;
+  --accent-hi: #9AA0FF;
+  --accent-on: #0A0A12;
+  --danger: #F87171;
+  --success: #4ADE80;
+  /* "да, но" — a yes that hides a caveat easy to mistake for a clean win.
+     Added 27.08 for DomainVerdict rows (e.g. Способ 2 · Темы, Способ 3 · Размеры). */
+  --caveat: #FBBF24;
+
+  /* spacing */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+
+  /* slide padding — ONE RULE */
+  --slide-pad: 64px;
+
+  /* radii */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px;
+
+  /* type */
+  --t-display: 72px;
+  --t-h1: 48px;
+  --t-h2: 32px;
+  --t-h3: 22px;
+  --t-body: 20px;
+  --t-small: 16px;
+  --t-mono: 15px;
+
+  /* Block code. Slidev ships 12px/18px (@slidev/client/styles/vars.css) —
+     unreadable from the back of a room on a 980×552 slide. At 18px/28px the
+     budget is ~13 lines: content height 552 − 2×64 (--slide-pad) = 424,
+     minus 2×--s-5 of <pre> padding. Keep code blocks under that. */
+  --slidev-code-font-size: 18px;
+  --slidev-code-line-height: 26px;
+}
